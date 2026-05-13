@@ -1,16 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { Routes, Route } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import ProductPage from './pages/ProductPage'
+import ShopPage from './pages/ShopPage'
+import CartPage from './pages/CartPage'
+import OrderTrackingPage from './pages/OrderTrackingPage'
 
 function App() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold text-red-600">
-        Croil Market is Live!
-      </h1>
-    </div>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/product/:category" element={<ProductPage />} />
+      <Route path="/shops/:productId" element={<ShopPage />} />
+      <Route path="/cart" element={<CartPage />} />
+      <Route path="/order/:id" element={<OrderTrackingPage />} />
+    </Routes>
   )
 }
 
