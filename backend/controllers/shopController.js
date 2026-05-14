@@ -46,4 +46,20 @@ const createShop = async (req, res) => {
   }
 };
 
-module.exports = { getShops, getShopsByProduct, getShopById, createShop };
+const updateShop = async (req, res) => {
+  try {
+    const shop = await Shop.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    ).populate('products.product');
+    if (!shop) {
+      return res.status(404).json({ message: 'Shop not found' });
+    }
+    res.json(shop);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports = { getShops, getShopsByProduct, getShopById, createShop, updateShop };
