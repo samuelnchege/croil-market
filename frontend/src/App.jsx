@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
+import ProtectedRoute from './components/ProtectedRoute'
 import HomePage from './pages/HomePage'
 import ProductPage from './pages/ProductPage'
 import CartPage from './pages/CartPage'
@@ -34,8 +35,22 @@ function App() {
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/order/:id" element={<OrderTrackingPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/partner" element={<PartnerPortal />} />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute role="admin">
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/partner"
+            element={
+              <ProtectedRoute role="shop-partner">
+                <PartnerPortal />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </div>
     </div>
