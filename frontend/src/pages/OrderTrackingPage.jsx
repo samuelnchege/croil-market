@@ -5,7 +5,7 @@ import { formatPrice } from '../utils/helpers'
 import { ArrowLeft, Package, CheckCircle, Truck, Clock, XCircle } from 'lucide-react'
 import toast from 'react-hot-toast'
 
-const API_URL = 'http://localhost:5000/api'
+const API_URL = import.meta.env.VITE_API_URL
 
 const statusSteps = [
   { key: 'pending', label: 'Order Placed', icon: Clock },

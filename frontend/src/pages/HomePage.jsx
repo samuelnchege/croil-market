@@ -148,20 +148,29 @@ function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="w-full bg-[#1A1A1A] text-white py-10 px-8">
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <span className="text-2xl font-bold text-[#C8410B]">Croil</span>
-            <span className="text-2xl font-bold text-[#F5A623]">Market</span>
-          </div>
-          <p className="text-gray-400 mb-4">
-            Connecting you to the freshest local ingredients
-          </p>
-          <p className="text-gray-600 text-sm">
-            © 2025 Croil Market. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      {/* Footer */}
+<footer className="w-full bg-[#1A1A1A] text-white py-10 px-8">
+  <div className="max-w-6xl mx-auto text-center">
+    <div className="flex items-center justify-center gap-2 mb-4">
+      <span className="text-2xl font-bold text-[#C8410B]">Croil</span>
+      <span className="text-2xl font-bold text-[#F5A623]">Market</span>
+    </div>
+    <p className="text-gray-400 mb-4">
+      Connecting you to the freshest local ingredients
+    </p>
+    <p className="text-gray-600 text-sm">
+      © 2026 Croil Market. All rights reserved. Built by{' '}
+      
+        <a href="https://samuelnchege.github.io/cv/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-[#F5A623] hover:text-white transition-colors font-medium"
+      >
+        FuturistTech
+      </a>
+    </p>
+  </div>
+</footer>
 
     </div>
   )
