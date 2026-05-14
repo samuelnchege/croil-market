@@ -108,8 +108,49 @@ function Navbar() {
           >
             Red Oil
           </Link>
+
+          {user ? (
+            <>
+              <span className="text-gray-800 font-semibold">{user.name}</span>
+              {user.role === 'admin' && (
+                <Link
+                  to="/admin"
+                  className="text-[#C8410B] font-semibold"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Dashboard
+                </Link>
+              )}
+              {user.role === 'shop-partner' && (
+                <Link
+                  to="/partner"
+                  className="text-[#C8410B] font-semibold"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  My Shop
+                </Link>
+              )}
+              <button
+                onClick={() => {
+                  logout()
+                  setMenuOpen(false)
+                }}
+                className="text-red-500 font-semibold text-left"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link
+              to="/login"
+              className="bg-[#C8410B] text-white font-bold px-5 py-2 rounded-xl text-center"
+              onClick={() => setMenuOpen(false)}
+            >
+              Login
+            </Link>
+          )}
         </div>
-      )}
+      )}    
     </nav>
   )
 }

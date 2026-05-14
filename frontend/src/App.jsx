@@ -10,6 +10,7 @@ import LoginPage from './pages/LoginPage'
 import AdminDashboard from './pages/AdminDashboard'
 import PartnerPortal from './pages/PartnerPortal'
 import { Toaster } from 'react-hot-toast'
+import NotFoundPage from './pages/NotFoundPage'
 
 const noNavbarRoutes = ['/admin', '/partner', '/login']
 
@@ -51,6 +52,7 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
     </div>
