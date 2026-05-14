@@ -12,10 +12,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+
 // Routes
+app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/products', require('./routes/productRoutes'));
 app.use('/api/shops', require('./routes/shopRoutes'));
 app.use('/api/orders', require('./routes/orderRoutes'));
+
 
 app.get('/', (req, res) => {
   res.json({ message: 'Croil Market API is running' });
