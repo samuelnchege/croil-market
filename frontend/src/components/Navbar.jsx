@@ -2,11 +2,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 import { ShoppingCart, Menu, X } from 'lucide-react'
 import { useState } from 'react'
+import { useAuth } from '../context/AuthContext'
 
 function Navbar() {
   const { totalItems } = useCart()
   const [menuOpen, setMenuOpen] = useState(false)
   const navigate = useNavigate()
+  const { user, logout } = useAuth()
 
   return (
     <nav className="w-full bg-white shadow-sm sticky top-0 z-50">
@@ -20,15 +22,43 @@ function Navbar() {
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
-          <Link to="/" className="text-gray-600 hover:text-[#C8410B] font-medium transition-colors">
+        <Link to="/" className="text-gray-600 hover:text-[#C8410B] font-medium transition-colors">
             Home
-          </Link>
-          <Link to="/product/crayfish" className="text-gray-600 hover:text-[#C8410B] font-medium transition-colors">
+        </Link>
+        <Link to="/product/crayfish" className="text-gray-600 hover:text-[#C8410B] font-medium transition-colors">
             Crayfish
-          </Link>
-          <Link to="/product/red-oil" className="text-gray-600 hover:text-[#C8410B] font-medium transition-colors">
+        </Link>
+        <Link to="/product/red-oil" className="text-gray-600 hover:text-[#C8410B] font-medium transition-colors">
             Red Oil
-          </Link>
+        </Link>
+        {user ? (
+            <div className="flex items-center gap-4">
+            <span className="text-gray-600 font-medium">{user.name}</span>
+            {user.role === 'admin' && (
+                <Link to="/admin" className="text-[#C8410B] font-medium">
+                Dashboard
+                </Link>
+            )}
+            {user.role === 'shop-partner' && (
+                <Link to="/partner" className="text-[#C8410B] font-medium">
+                My Shop
+                </Link>
+            )}
+            <button
+                onClick={logout}
+                className="text-gray-500 hover:text-red-500 font-medium transition-colors"
+            >
+                Logout
+            </button>
+            </div>
+        ) : (
+            <Link
+            to="/login"
+            className="bg-[#C8410B] text-white font-bold px-5 py-2 rounded-xl hover:bg-[#a8340a] transition-colors"
+            >
+            Login
+            </Link>
+        )}
         </div>
 
         {/* Cart Icon */}

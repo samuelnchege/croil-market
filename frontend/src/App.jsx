@@ -7,6 +7,10 @@ import CartPage from './pages/CartPage'
 import OrderTrackingPage from './pages/OrderTrackingPage'
 import { Toaster } from 'react-hot-toast'
 import CheckoutPage from './pages/CheckoutPage'
+import LoginPage from './pages/LoginPage'
+import AdminDashboard from './pages/AdminDashboard'
+import PartnerPortal from './pages/PartnerPortal'
+
 
 function App() {
   return (
@@ -20,6 +24,9 @@ function App() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/order/:id" element={<OrderTrackingPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/partner" element={<PartnerPortal />} />
       </Routes>
     </div>
   )
