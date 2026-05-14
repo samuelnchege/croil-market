@@ -6,6 +6,7 @@ import ShopPage from './pages/ShopPage'
 import CartPage from './pages/CartPage'
 import OrderTrackingPage from './pages/OrderTrackingPage'
 import { Toaster } from 'react-hot-toast'
+import CheckoutPage from './pages/CheckoutPage'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/shops/:productId" element={<ShopPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/order/:id" element={<OrderTrackingPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
       </Routes>
     </div>
   )
