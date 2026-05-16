@@ -183,7 +183,7 @@ function PartnerSignup() {
               name="shopArea"
               value={form.shopArea}
               onChange={handleChange}
-              placeholder="e.g Ikeja, Lagos"
+              placeholder="e.g Ikejaa, Lagos"
               className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#C8410B] transition-colors"
             />
           </div>
