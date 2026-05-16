@@ -38,8 +38,8 @@ const getShopById = async (req, res) => {
 // Create a shop
 const createShop = async (req, res) => {
   try {
-    const { name, address, phone, products } = req.body;
-    const shop = await Shop.create({ name, address, phone, products });
+    const { name, address, phone, products, area } = req.body;
+    const shop = await Shop.create({ name, address, area, phone, products });
     res.status(201).json(shop);
   } catch (error) {
     res.status(500).json({ message: error.message });

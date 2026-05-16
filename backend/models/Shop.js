@@ -6,10 +6,9 @@ const shopSchema = new mongoose.Schema({
     required: true,
   },
   area: {
-  type: String,
-  required: false,
-  default: '',
-},
+    type: String,
+    required: true,
+  },
   address: {
     type: String,
     required: true,
