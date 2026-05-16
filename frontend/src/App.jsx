@@ -11,8 +11,9 @@ import AdminDashboard from './pages/AdminDashboard'
 import PartnerPortal from './pages/PartnerPortal'
 import { Toaster } from 'react-hot-toast'
 import NotFoundPage from './pages/NotFoundPage'
+import PartnerSignup from './pages/PartnerSignup'
 
-const noNavbarRoutes = ['/admin', '/partner', '/login']
+const noNavbarRoutes = ['/admin', '/partner', '/login', '/partner/signup']
 
 function App() {
   const hideNavbar = noNavbarRoutes.some(route =>
@@ -36,6 +37,7 @@ function App() {
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/order/:id" element={<OrderTrackingPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/partner/signup" element={<PartnerSignup />} />
           <Route
             path="/admin"
             element={

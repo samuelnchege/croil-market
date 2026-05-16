@@ -301,20 +301,67 @@ function AdminDashboard() {
               </div>
             )}
 
-            {/* Products Tab */}
+           {/* Products Tab */}
             {activeTab === 'products' && (
               <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-                <h2 className="text-xl font-bold text-gray-800 mb-6">Products</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <h2 className="text-xl font-bold text-gray-800 mb-6">
+                  Manage Product Prices
+                </h2>
+                <div className="flex flex-col gap-4">
                   {products.map(product => (
-                    <div key={product._id} className="border border-gray-100 rounded-2xl p-5 flex items-center gap-4">
-                      <div className="w-16 h-16 bg-orange-50 rounded-xl flex items-center justify-center">
-                        <Package size={28} className="text-[#C8410B]" />
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-gray-800 text-lg">{product.name}</h3>
-                        <p className="text-gray-400 text-sm">{product.category}</p>
-                        <p className="text-gray-500 text-sm mt-1">{product.description}</p>
+                    <div
+                      key={product._id}
+                      className="border border-gray-100 rounded-2xl p-5"
+                    >
+                      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div className="flex items-center gap-4">
+                          <div className="w-16 h-16 bg-orange-50 rounded-xl flex items-center justify-center">
+                            <Package size={28} className="text-[#C8410B]" />
+                          </div>
+                          <div>
+                            <h3 className="font-bold text-gray-800 text-lg">{product.name}</h3>
+                            <p className="text-gray-400 text-sm">{product.category}</p>
+                            <p className="text-[#C8410B] font-bold mt-1">
+                              Current Price: {formatPrice(product.price || 0)}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-4">
+                          <div>
+                            <label className="block text-xs text-gray-400 mb-1">
+                              Set New Price (₦)
+                            </label>
+                            <input
+                              type="number"
+                              defaultValue={product.price || 0}
+                              id={`price-${product._id}`}
+                              className="border border-gray-200 rounded-xl px-3 py-2 w-36 text-sm focus:outline-none focus:border-[#C8410B]"
+                            />
+                          </div>
+                          <button
+                            onClick={async () => {
+                              const newPrice = document.getElementById(`price-${product._id}`).value
+                              try {
+                                const config = {
+                                  headers: { Authorization: `Bearer ${user.token}` }
+                                }
+                                await axios.put(`${API_URL}/products/${product._id}`, {
+                                  price: Number(newPrice)
+                                }, config)
+                                setProducts(products.map(p =>
+                                  p._id === product._id ? { ...p, price: Number(newPrice) } : p
+                                ))
+                                toast.success(`${product.name} price updated!`)
+                              } catch (error) {
+                                toast.error('Failed to update price')
+                              }
+                            }}
+                            className="bg-[#C8410B] text-white font-semibold px-6 py-2 rounded-xl hover:bg-[#a8340a] transition-colors mt-4"
+                          >
+                            Update Price
+                          </button>
+                        </div>
                       </div>
                     </div>
                   ))}

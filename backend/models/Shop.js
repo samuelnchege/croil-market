@@ -33,6 +33,10 @@ const shopSchema = new mongoose.Schema({
       },
     },
   ],
+  area: {
+  type: String,
+  required: true,
+},
 }, { timestamps: true });
 
 module.exports = mongoose.model('Shop', shopSchema);

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import toast from 'react-hot-toast'
 import { Eye, EyeOff } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 function LoginPage() {
   const { login } = useAuth()
@@ -107,6 +108,14 @@ function LoginPage() {
           >
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
+          <div className="border-t pt-4 mt-2">
+          <p className="text-center text-gray-400 text-sm">
+            Want to list your shop?{' '}
+            <Link to="/partner/signup" className="text-[#C8410B] font-medium hover:underline">
+              Become a Partner
+            </Link>
+          </p>
+        </div>
         </div>
 
       </div>
