@@ -5,6 +5,10 @@ const shopSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  area: {
+    type: String,
+    required: true,
+  },
   address: {
     type: String,
     required: true,
@@ -33,10 +37,6 @@ const shopSchema = new mongoose.Schema({
       },
     },
   ],
-  area: {
-  type: String,
-  required: true,
-},
 }, { timestamps: true });
 
 module.exports = mongoose.model('Shop', shopSchema);
